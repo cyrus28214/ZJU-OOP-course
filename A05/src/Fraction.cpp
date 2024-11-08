@@ -23,6 +23,13 @@ Fraction::Fraction(const std::string& decimal) {
     this->from_decimal(decimal);
 }
 
+Fraction::num_t Fraction::get_numerator() const {
+    return this->numerator;
+}
+Fraction::num_t Fraction::get_denominator() const {
+    return this->denominator;
+}
+
 void Fraction::simplify() {
     num_t gcd = std::gcd(this->numerator, this->denominator);
     this->numerator /= gcd;

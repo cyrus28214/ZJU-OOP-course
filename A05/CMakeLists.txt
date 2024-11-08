@@ -4,12 +4,10 @@ project(Adventure LANGUAGES CXX)
 set(CMAKE_CXX_STANDARD 17)
 set(CMAKE_CXX_STANDARD_REQUIRED True)
 
-set(SOURCES 
-)
-
-set(HEADERS
-)
-
 include_directories(src)
 
-set(CMAKE_RUNTIME_OUTPUT_DIRECTORY "${CMAKE_SOURCE_DIR}/bin")
+find_package(GTest REQUIRED)
+enable_testing()
+add_executable(tests test/tests.cpp)
+target_link_libraries(tests GTest::GTest GTest::Main)
+add_test(NAME tests COMMAND tests)

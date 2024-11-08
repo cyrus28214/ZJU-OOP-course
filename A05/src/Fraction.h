@@ -11,8 +11,11 @@ public:
     Fraction(num_t numerator, num_t denominator);
     Fraction(const Fraction& other);
     Fraction(const std::string& decimal);
-    void simplify();
 
+    num_t get_numerator() const;
+    num_t get_denominator() const;
+
+    void simplify();
     Fraction operator+(const Fraction& other) const;
     Fraction operator-(const Fraction& other) const;
     Fraction operator*(const Fraction& other) const;
