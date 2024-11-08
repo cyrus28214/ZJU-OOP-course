@@ -8,6 +8,6 @@ include_directories(src)
 
 find_package(GTest REQUIRED)
 enable_testing()
-add_executable(tests test/tests.cpp)
+add_executable(tests test/tests.cpp src/Fraction.cpp)
 target_link_libraries(tests GTest::GTest GTest::Main)
 add_test(NAME tests COMMAND tests)

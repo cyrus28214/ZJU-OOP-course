@@ -6,7 +6,7 @@
 
 class Fraction {
 public:
-    using num_t = std::size_t;
+    using num_t = std::int64_t;
     Fraction() : numerator(0), denominator(1) {}
     Fraction(num_t numerator, num_t denominator);
     Fraction(const Fraction& other);
