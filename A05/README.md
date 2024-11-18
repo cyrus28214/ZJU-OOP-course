@@ -29,7 +29,7 @@ This project implements a C++ class `Fraction` that represents a fraction and pr
 
 ### Compile and Test
 
-Run `scripts/test.sh`. Then you will see:
+Run `script/test.sh`. Then you will see:
 
 ```txt
 ...

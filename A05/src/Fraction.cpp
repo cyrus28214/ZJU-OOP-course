@@ -86,6 +86,7 @@ bool Fraction::operator!=(const Fraction& other) const {
 
 bool Fraction::operator<(const Fraction& other) const {
     // a/b - c/d = (ad - bc) / bd
+    // the sign of the result is the same as the sign of (ad - bc) * bd
     bool rev = (this->denominator < 0) ^ (other.denominator < 0);
     return (this->numerator * other.denominator < other.numerator * this->denominator) ^ rev;
 }
@@ -93,6 +94,16 @@ bool Fraction::operator<(const Fraction& other) const {
 bool Fraction::operator>(const Fraction& other) const {
     bool rev = (this->denominator < 0) ^ (other.denominator < 0);
     return (this->numerator * other.denominator > other.numerator * this->denominator) ^ rev;
+}
+
+bool Fraction::operator<=(const Fraction& other) const {
+    bool rev = (this->denominator < 0) ^ (other.denominator < 0);
+    return (this->numerator * other.denominator <= other.numerator * this->denominator) ^ rev;
+}
+
+bool Fraction::operator>=(const Fraction& other) const {
+    bool rev = (this->denominator < 0) ^ (other.denominator < 0);
+    return (this->numerator * other.denominator >= other.numerator * this->denominator) ^ rev;
 }
 
 Fraction::operator double() const {
