@@ -125,6 +125,12 @@ TEST(FractionTest, InputOutputOperators) {
     ss >> f2;
     EXPECT_EQ(f2.get_numerator(), 3);
     EXPECT_EQ(f2.get_denominator(), 412);
+
+    ss.clear();
+    ss.str("24 / 65676");
+    ss >> f2;
+    EXPECT_EQ(f2.get_numerator(), 2);
+    EXPECT_EQ(f2.get_denominator(), 5473);
 }
 
 // Test handling of negative fractions (denominator is negative)

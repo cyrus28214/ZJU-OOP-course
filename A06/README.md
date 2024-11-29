@@ -5,14 +5,17 @@ This project implements a C++ class `Vector<T>` that supports many common operat
 ## File Structure
 
 ```txt
+.
 ├── CMakeLists.txt
 ├── README.md
 ├── script
+│   ├── compile.sh
 │   ├── package.sh
 │   └── test.sh
 ├── src
-│   ├── Fraction.cpp
-│   └── Fraction.h
+│   ├── example.cpp
+│   ├── Vector.h
+│   └── Vector.tpp
 └── test
     └── tests.cpp
 ```
