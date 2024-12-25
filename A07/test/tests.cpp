@@ -68,37 +68,40 @@ int main()
 
     std::cout << "Testing map creation and insertion" << std::endl;
     using IntMap = std::map<int, int, std::less<int>, MyAllocator<std::pair<const int, int>>>;
-    IntMap* mapints = new IntMap();
+    std::vector<IntMap, MyAllocator<IntMap>> mapints(TestSize);
     using PointMap = std::map<int, Point2D, std::less<int>, MyAllocator<std::pair<const int, Point2D>>>;
-    PointMap* mappts = new PointMap();
-    for (int i = 0; i < TestSize; i++) {
-        mapints->insert({ i, dis(gen) });
-        mappts->insert({ i, {dis(gen), dis(gen)} });
+    std::vector<PointMap, MyAllocator<PointMap>> mappts(TestSize);
+    for (int i = 0; i < PickSize; i++) {
+        int idx = dis(gen) - 1;
+        mapints[idx].insert({ i, dis(gen) });
+        mappts[idx].insert({ i, {dis(gen), dis(gen)} });
     }
 
     std::cout << "Testing map assignment" << std::endl;
     {
         int val = 10;
-        int idx = dis(gen) - 1;
-        (*mapints)[idx] = val;
-        if ((*mapints)[idx] == val)
-            std::cout << "correct assignment in mapints: " << idx << std::endl;
+        int idx1 = dis(gen) - 1;
+        int idx2 = mapints[idx1].size() / 2;
+        mapints[idx1][idx2] = val;
+        if (mapints[idx1][idx2] == val)
+            std::cout << "correct assignment in mapints: " << idx1 << std::endl;
         else
-            std::cout << "incorrect assignment in mapints: " << idx << std::endl;
+            std::cout << "incorrect assignment in mapints: " << idx1 << std::endl;
     }
     {
-        Point2D val(24, 65676);
-        int idx = dis(gen) - 1;
-        (*mappts)[idx] = val;
-        if ((*mappts)[idx] == val)
-            std::cout << "correct assignment in mappts: " << idx << std::endl;
+        Point2D val(24, 67656);
+        int idx1 = dis(gen) - 1;
+        int idx2 = mappts[idx1].size() / 2;
+        mappts[idx1][idx2] = val;
+        if (mappts[idx1][idx2] == val)
+            std::cout << "correct assignment in mappts: " << idx1 << std::endl;
         else
-            std::cout << "incorrect assignment in mappts: " << idx << std::endl;
+            std::cout << "incorrect assignment in mappts: " << idx1 << std::endl;
     }
 
     std::cout << "Testing map destruction" << std::endl;
-    delete mapints;
-    delete mappts;
+    mapints.clear();
+    mappts.clear();
 
     std::cout << "Testing complete" << std::endl;
 

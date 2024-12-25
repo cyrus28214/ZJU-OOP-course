@@ -2,9 +2,15 @@
 
 This project implements a custom allocator to replace the default allocator `std::Allocator<T>`. And the allocator uses memory pool to speed up the dynamic allocation of a large number of small blocks and to reduce memory fragmentation. This allocator can used with some STL containers like `std::vector` and `std::map`.
 
+## Report
+
+The PDF format report is at `report/report.pdf`. 
+
+**The content in `report.pdf` is different from this `README.md` file.** So please check it out. 
+
 ## File Structure
 
-```t
+```txt
 .
 ├── build
 ├── CMakeLists.txt
